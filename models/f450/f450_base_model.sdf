@@ -1,0 +1,762 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="f450_base_model">
+
+    <link name="base_link">
+      <!-- Body physics {-->
+      <inertial>
+        <mass>1.7</mass>
+        <inertia>
+          <ixx>0.01735416666666667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01735416666666667</iyy>
+          <iyz>0</iyz>
+          <izz>0.034</izz>
+        </inertia>
+      </inertial>
+      <collision name="base_link_collision">
+        <pose>
+          <x>0</x>
+          <y>0</y>
+          <z>-0.05</z>
+          <roll>0</roll>
+          <pitch>0</pitch>
+          <yaw>0</yaw>
+        </pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.2</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <plugin filename="libgazebo_multirotor_base_plugin.so" name="multirotor_base_plugin">
+        <robotNamespace/>
+        <linkName>base_link</linkName>
+        <rotorVelocitySlowdownSim>0.0159236</rotorVelocitySlowdownSim>
+      </plugin>
+      <!--}-->
+      <!-- Body visuals {-->
+      <!-- Boards {-->
+      <visual name="lower_central_board_visual">
+        <pose>0 0 -0.05 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_central_bottom.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="upper_central_board_visual">
+        <pose>0 0 -0.012000000000000004 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_central_top.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <!--}-->
+      <!-- Arms {-->
+      <visual name="front_right_arm_visual">
+        <pose>0.045961940777125586 -0.045961940777125586 -0.012000000000000004 0 0 -0.7853981633974483</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_arm.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="front_left_arm_visual">
+        <pose>0.045961940777125586 0.045961940777125586 -0.012000000000000004 0 0 0.7853981633974483</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_arm.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="back_right_arm_visual">
+        <pose>-0.045961940777125586 -0.045961940777125586 -0.012000000000000004 0 0 -2.356194490192345</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_arm.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="back_left_arm_visual">
+        <pose>-0.045961940777125586 0.045961940777125586 -0.012000000000000004 0 0 2.356194490192345</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_arm.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <!--}-->
+      <!-- Intel NUC {-->
+      <visual name="NUC_visual">
+        <pose>0 0 0.023 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_nuc.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <!--}-->
+      <!-- Pixhawk {-->
+      <visual name="pixhawk_visual">
+        <pose>0 0 -0.0425 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/pixhawk.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <!--}-->
+      <!-- Legs {-->
+      <visual name="front_right_leg_visual">
+        <pose>0.15754339084836277 -0.15754339084836277 -0.11000000000000001 0 0 2.356194490192345</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_leg_170mm.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="front_right_leg_collision">
+        <pose>0.15754339084836277 -0.15754339084836277 -0.11000000000000001 0 0 2.356194490192345</pose>
+        <geometry>
+          <cylinder>
+            <length>0.17</length>
+            <radius>0.012</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="front_left_leg_visual">
+        <pose>0.15754339084836277 0.15754339084836277 -0.11000000000000001 0 0 -2.356194490192345</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_leg_170mm.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="front_left_leg_collision">
+        <pose>0.15754339084836277 0.15754339084836277 -0.11000000000000001 0 0 -2.356194490192345</pose>
+        <geometry>
+          <cylinder>
+            <length>0.17</length>
+            <radius>0.012</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="back_right_leg_visual">
+        <pose>-0.15754339084836277 -0.15754339084836277 -0.11000000000000001 0 0 0.7853981633974483</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_leg_170mm.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="back_right_leg_collision">
+        <pose>-0.15754339084836277 -0.15754339084836277 -0.11000000000000001 0 0 0.7853981633974483</pose>
+        <geometry>
+          <cylinder>
+            <length>0.17</length>
+            <radius>0.012</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="back_left_leg_visual">
+        <pose>-0.15754339084836277 0.15754339084836277 -0.11000000000000001 0 0 -0.7853981633974483</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_leg_170mm.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="back_left_leg_collision">
+        <pose>-0.15754339084836277 0.15754339084836277 -0.11000000000000001 0 0 -0.7853981633974483</pose>
+        <geometry>
+          <cylinder>
+            <length>0.17</length>
+            <radius>0.012</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <!--}-->
+      <!-- Motors {-->
+      <visual name="front_right_motor_visual">
+        <pose>0.1626345596729059 -0.1626345596729059 -0.012000000000000004 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_rotor.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="front_left_motor_visual">
+        <pose>0.1626345596729059 0.1626345596729059 -0.012000000000000004 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_rotor.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="back_right_motor_visual">
+        <pose>-0.1626345596729059 -0.1626345596729059 -0.012000000000000004 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_rotor.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="back_left_motor_visual">
+        <pose>-0.1626345596729059 0.1626345596729059 -0.012000000000000004 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_rotor.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <!--}-->
+      <!-- Battery mount and battery {-->
+      <visual name="battery_mount_visual">
+        <pose>0 0 -0.078 0 0 1.5707963267948966</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_battery_mount.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="battery_visual">
+        <pose>0 0 -0.077 0 0 1.5707963267948966</pose>
+        <geometry>
+          <box>
+            <size>0.13 0.042 0.044</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <!--}-->
+      <!--}-->
+      <sensor name="air_pressure_sensor" type="air_pressure">
+        <always_on>1</always_on>
+        <update_rate>50</update_rate>
+        <air_pressure>
+          <pressure>
+            <noise type="gaussian">
+              <mean>0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </pressure>
+        </air_pressure>
+      </sensor>
+      <sensor name="imu_sensor" type="imu">
+        <always_on>1</always_on>
+        <update_rate>250</update_rate>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+      <sensor name="navsat_sensor" type="navsat">
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+      </sensor>
+    </link>
+
+    
+    <link name="prop_0_link">
+      <pose>0.1626345596729059 -0.1626345596729059 0.011499999999999996 0 0 0</pose>
+      <inertial>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="prop_0_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_prop.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="prop_0_link_collision">
+        <pose>0 0 0 0 1.5707963267948966 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.236</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    
+    <joint name="prop_0_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>prop_0_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    
+    <link name="prop_1_link">
+      <pose>-0.1626345596729059 0.1626345596729059 0.011499999999999996 0 0 0</pose>
+      <inertial>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="prop_1_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_prop.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="prop_1_link_collision">
+        <pose>0 0 0 0 1.5707963267948966 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.236</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    
+    <joint name="prop_1_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>prop_1_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    
+    <link name="prop_2_link">
+      <pose>0.1626345596729059 0.1626345596729059 0.011499999999999996 0 0 0</pose>
+      <inertial>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="prop_2_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_prop.dae</uri>
+            <scale>-1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="prop_2_link_collision">
+        <pose>0 0 0 0 1.5707963267948966 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.236</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    
+    <joint name="prop_2_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>prop_2_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    
+    <link name="prop_3_link">
+      <pose>-0.1626345596729059 -0.1626345596729059 0.011499999999999996 0 0 0</pose>
+      <inertial>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="prop_3_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://f450/meshes/dji_f450_prop.dae</uri>
+            <scale>-1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="prop_3_link_collision">
+        <pose>0 0 0 0 1.5707963267948966 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.236</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    
+    <joint name="prop_3_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>prop_3_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+  
+  </model>
+</sdf>
